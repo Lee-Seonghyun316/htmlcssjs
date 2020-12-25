@@ -1,0 +1,185 @@
+<!-- 20191112102_이성현 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>2020학년도 2학기 인터넷프로그래밍 기말고사</title>
+    <link rel="stylesheet" type="text/css" href="style(배포).css" />
+    <script type="text/javascript">
+      function Name(obj) {
+        // var str = document.getElementById("name").value;
+        // var name = document.getElementById("name");
+        var str = obj.value;
+        for (i = 0; i < str.length; i++) {
+          a = str.substr(i, 1);
+          if (a == " ") {
+            alert("이름은 공백 입력안됩니다! \n다시 입력해 주세요!");
+            name.focus();
+            return false;
+          }
+        }
+        // if ((name.value = " ")) {   alert("이름은 공백 입력안됩니다! \n다시 입력해 주세요!"); }
+
+        /* (1) 이름은 공백을 허용하지 않으며, 공백 입력 시 경고 창을 팝업 하는 함수 완성 (3점) */
+      }
+
+      var total = 0,
+        lecture = "",
+        cnt = 0;
+
+      function Money(cbox) {
+        var result = document.getElementById("result");
+
+        var totalPrice = 0;
+        var msg = "";
+
+        if (cBox.checked) {
+          document.getElementById("lecimg").src = cBox.value;
+          //이미지 바꾸고 싶었음
+
+          var a = cBox.text;
+          var sub = a.split(" ");
+          msg = msg + sub[0];
+          //강좌 목록 추출
+
+          var price = sub[1].replace(",", "");
+          price = price.replace("원", "");
+          price = parseInt(price);
+          totalPrice += price;
+          //가격 추출 합산
+
+          count++;
+          //카운트
+        }
+        // sum += parseInt(cBox.value); else     sum -= parseInt(cBox.value); document
+        // .getElementById("sumtext")     .value = sum;
+        /* (2) 강좌 선택에 따른 이미지 표시, 신청 내역 출력, 총합계 출력, 막대바 영역에 반영하는 함수 (18점)
+                        1) 강좌를 선택하면 왼쪽 이미지에 선택 강좌 이미지 표시 (단, 단일 선택만 고려) (3점)
+                        2) 강좌목록은 다중선택이 가능하며, 강좌 선택 시 선택 강좌명과 수강금액 누적 (7점)
+                        3) 입력한 이름, 선택한 강좌 목록, 선택 강좌 수, 결재금액은 텍스트 영역에 표시 (5점)
+                        4) 수강금액 누적 금액에 따라 막대바 영역에 반영되어 표시 (3점)  */
+      }
+      function Timer() {
+        var now = new Date();
+        document.getElementById("time").value =
+          now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+
+        setTimeout("Timer()", 1000);
+        //timerID = setTimeout("load('http://www.naver.com')", time);
+        /* (3) 현재 시간을 매 초마다 출력하는 함수 완성 (4점) */
+      }
+      function sub() {
+        var name = document.getElementById("name");
+        var ret = confirm(name.value + "님, 신청내역을 결재하시겠습니까?");
+        return ret; // confirm()의 리턴 값은 true 또는 false
+        /* (4) 결재 버튼을 클릭하면 확인 대화상자에 입력한 이름과 함께 결재여부 확인 창 팝업 (3점) */
+      }
+    </script>
+  </head>
+  <body onload="Timer()">
+    <header>
+      <hgroup>
+        <h1>2020학년 2학기 인터넷프로그래밍</h1>
+        <h2>기말고사</h2>
+      </hgroup>
+    </header>
+
+    <article>
+      <div id="wrapper">
+        <h1>[영어 강좌 수강신청]</h1>
+
+        <img
+          id="lecimg"
+          src="http://www.booksr.co.kr/upload_data/Catalog/웹프로그래밍표지(0).jpg"
+          width="297"
+          height="357"
+        />
+
+        <div id="right">
+          <form method="get" id="cbox">
+            <table>
+              <tr>
+                <td class="right">이 름 :</td>
+                <td colspan="2">
+                  <input type="text" id="name" onblur="Name(this)" />
+                </td>
+              </tr>
+              <tr>
+                <td class="right">강좌 목록 :</td>
+                <td colspan="2">
+                  <input
+                    type="checkbox"
+                    value="img/basic.png"
+                    onchange="Money()"
+                  />
+                  <span>기초영문법 50,000원</span><br />
+                  <input
+                    type="checkbox"
+                    value="img/pronun.png"
+                    onchange="Money()"
+                  />
+                  <span>영발음 65,000원</span><br />
+                  <input
+                    type="checkbox"
+                    value="img/trip.png"
+                    onchange="Money()"
+                  />
+                  <span>여행 영어회화 70,000원</span><br />
+                  <input
+                    type="checkbox"
+                    value="img/speaking.png"
+                    onchange="Money()"
+                  />
+                  <span>스피킹 트레이닝 80,000원</span><br /><br />
+                </td>
+              </tr>
+              <tr>
+                <td class="right">신청 내역 :</td>
+                <td colspan="2">
+                  <textarea
+                    rows="6"
+                    cols="52"
+                    id="result"
+                    disabled="disabled"
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td class="right">총 합 계:</td>
+                <td>
+                  <input
+                    type="text"
+                    id="total"
+                    value="0"
+                    disabled="disabled"
+                  />원
+                </td>
+                <td class="right">
+                  <meter
+                    style="width: 170px"
+                    id="mt"
+                    value="0"
+                    low="15000"
+                    min="0"
+                    max="265000"
+                  ></meter>
+                </td>
+              </tr>
+              <tr>
+                <td class="right">현재 시간 :</td>
+                <td><input type="text" id="time" disabled="disabled" /></td>
+                <td style="text-align: center">
+                  <input type="button" value="결재" onclick="sub()" />
+                  <input type="reset" id="cancel" value="취소" />
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </article>
+
+    <!-- (5) "본인 학번 이름 작성 부분"에 본인 정보로 대체할 것 (2점) -->
+    <footer>2020년 12월 10일 / 작성자 : 2019112102 이성현</footer>
+  </body>
+</html>

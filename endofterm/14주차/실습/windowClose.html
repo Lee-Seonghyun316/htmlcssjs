@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>윈도우 OPEN, CLOSE</title>
+    <script>
+      var newWin = null;
+      function load(URL) {
+        newWin = window.open(URL, "mywin", "left=300,width=400,height=300");
+      }
+      function closeNewWindow() {
+        if (newWin == null || newWin.closed) return;
+        else newWin.close();
+      }
+    </script>
+  </head>
+  <body>
+    <h3>window의 open, close</h3>
+    <hr />
+    <a href="javascript:load('https://www.wikipedia.org/')">위키백과 열기</a>
+    <a href="javascript:window.close()"> 현재 창 닫기</a>
+    <a href="javascript:closeNewWindow()">새로운 창 닫기</a>
+  </body>
+</html>
